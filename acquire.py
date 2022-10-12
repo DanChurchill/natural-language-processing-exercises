@@ -13,9 +13,9 @@ def get_blog_articles():
 
     for link in soup.find_all('h2')[0:6]:
         blog_url = re.findall(regexp, str(link))[0]
-        print(blog_url)
         response2 = get(blog_url, headers=headers)
         soup2 = BeautifulSoup(response2.content, 'html.parser')
         content = soup2.find('div', id='main-content').text
         articles.append({'title' : soup2.title.string, 'content' : content})
     return articles
+
