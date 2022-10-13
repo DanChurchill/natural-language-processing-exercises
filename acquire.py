@@ -16,8 +16,9 @@ def get_blog_articles():
         blog_url = re.findall(regexp, str(link))[0]
         response2 = get(blog_url, headers=headers)
         soup2 = BeautifulSoup(response2.content, 'html.parser')
-        content = soup2.find('div', id='main-content').text.strip()
-        articles.append({'title' : soup2.title.string, 'content' : content})
+        title = soup2.select('h1.entry-title')
+        content = soup2.select('div.entry-content')
+        articles.append({'title' : title[0].text.strip(), 'content' : content[0].text.strip()})
     return pd.DataFrame(articles)
 
 def get_news_articles():
