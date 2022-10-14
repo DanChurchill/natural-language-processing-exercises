@@ -40,3 +40,5 @@ def get_news_articles():
     return pd.DataFrame(articles)
 
 
+
+
