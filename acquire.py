@@ -25,7 +25,7 @@ def get_news_articles():
     articles = []
 
     home_url = 'https://inshorts.com/en/read/'
-    cat_list = ['technology', 'sports', 'technology', 'entertainment']
+    cat_list = ['technology', 'sports', 'business', 'entertainment']
     for cat in cat_list:
         response = get(home_url+cat)
         soup = BeautifulSoup(response.content, 'html.parser')    
